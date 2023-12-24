@@ -1,0 +1,199 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+:root{
+    --main-bg:#1e272e;
+    --main-color:#0097e6;
+}
+.row{
+    margin: 0;
+}
+html{
+    font-size: 62.5%;
+}
+a,li{
+    list-style-type: none;
+    text-decoration: none;
+}
+h1,h2,h3,h4,h5,h6,p{
+    padding: 0;
+    margin: 0;
+    line-height: .8;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+/* All common css  */
+/* herder part start here  */
+.herder{
+  background-color: var(--main-bg);
+}
+
+.navbar-brand {
+    color: #fff;
+    font-size: 2rem;
+}
+.navbar-brand:hover{
+    color: #fff;
+    font-size: 2rem;
+}
+.navbar-expand-lg .navbar-nav .nav-link {
+    color: #fff;
+    font-size: 2rem;
+    padding: 0 10px;
+}
+.navbar-toggler{
+  background: #fff;
+}
+.fa-snowflake{
+    transition: all linear;
+    animation: rotate 2s linear infinite;
+    color: var(--main-color);
+}
+@keyframes rotate{
+   0%{
+     transform: rotate(0deg);
+   }
+   100%{
+    transform: rotate(360deg);
+   }
+}
+/* herder part end here  */
+/* Banner part start here  */
+.banner_left{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.banner{
+    /* background: rgb(162, 157, 157); */
+    padding: 100px 0;
+}
+.banner_left p{
+  font-size: 2rem;
+  padding: 1rem 0;
+}
+.banner_left h1{
+  font-size: 3rem;
+  padding: 1rem 0;
+  line-height: 30px;
+}
+.weather{
+    display: inline-block;
+    color: red;
+    padding: 0 10px;
+}
+.weather_content{
+    text-align: center;
+}
+.temp_form {
+    width: 500px;
+    background: var(--main-bg);
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 27px;
+    border-radius: 50px;
+}
+#cityname{
+    background: transparent;
+    border: none;
+    color: #fff;
+}
+.temp_form{
+    position: relative;
+}
+.temp_form input:focus{
+   outline: none;
+}
+.temp_form input{
+   font-size: 20px;
+   font-family: 'Roboto', sans-serif;
+}
+.temp_form #submitBtn {
+    background: blue;
+    border: none;
+    border-radius: 50px;
+    color: #fff;
+    position: absolute;
+    right: 4px;
+    padding: 8px 17px;
+    font-size: 15px;
+    top: 5px;
+}
+.temp_form input::placeholder{
+    color: #fff;
+}
+/* .tempInforMation{
+    text-align: center;
+} */
+.tempInforMation{
+    width: 300px;
+    background: var(--main-bg);
+    margin-top: 100x;
+    height: 250px;
+    margin: 20px  auto;
+}
+.top_layer{
+    background: rgb(89, 88, 88);
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 10px;
+}
+.top_layer p{
+    color: #fff;
+    font-size: 20px;
+}
+.main_layer{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.main_layer p{
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 50px;
+   
+}
+.middle_layer{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+.middle_layer p{
+    color: #fff;
+    font-size: 30px;
+    margin-bottom: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    padding-top: 10px;
+}
+.clouds{
+    font-size: 50px;
+    color: #fff;
+}
+.zero {
+    font-size: 10px;
+    top: -19px;
+    left: 0px;
+}
+#city_name{
+    font-size: 15px;
+}
+.data_hide{
+    display: none;
+}
+/* Banner part end here  */
+/* footer part end here  */
+.footer{
+    background: rgb(36, 9, 132);
+    padding: 30px 0;
+    margin-top: auto;
+}
+/* footer part end here  */

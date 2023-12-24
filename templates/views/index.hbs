@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     {{>headerlinks}}
+</head>
+<body>
+    
+<!-- Header part is start here  -->
+{{>navbar}}
+<!-- Header part is end here  -->
+<!-- Banner part is start here  -->
+<section class="banner">
+    <div class="container">
+        <div class="row">
+            <!-- Banner letf side  -->
+            <div class="col-md-6 col-12 banner_left">
+               <p>Welcome to weather app</p>
+               <h1>Get the latest <span class="weather">weather </span>info of Your city</h1>
+               <a href="/weather" class="mb-4"><button class="btn btn-primary py-2  px-3 text-white">Check now</button></a>
+            </div>
+            <!-- Banner right side  -->
+            <div class="col-md-6 col-12 banner_right">
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img src="images/1.jpg" class=" w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="images/2.jpg" class=" w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="images/3.jpg" class=" w-100" alt="...">
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Banner part is end here  -->
+
+
+<!-- Footer part is start here  -->
+{{>footer}}
+<!-- Footer part is end here  -->
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+    <script src="js/all.min.js"></script>
+    <script src="js/counter.js"></script>
+    <script src="js/dropdown.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+      (function ($bs) {
+        const CLASS_NAME = "has-child-dropdown-show";
+        $bs.Dropdown.prototype.toggle = (function (_orginal) {
+          return function () {
+            document.querySelectorAll("." + CLASS_NAME).forEach(function (e) {
+              e.classList.remove(CLASS_NAME);
+            });
+            let dd = this._element
+              .closest(".dropdown")
+              .parentNode.closest(".dropdown");
+            for (
+              ;
+              dd && dd !== document;
+              dd = dd.parentNode.closest(".dropdown")
+            ) {
+              dd.classList.add(CLASS_NAME);
+            }
+            return _orginal.call(this);
+          };
+        })($bs.Dropdown.prototype.toggle);
+  
+        document.querySelectorAll(".dropdown").forEach(function (dd) {
+          dd.addEventListener("hide.bs.dropdown", function (e) {
+            if (this.classList.contains(CLASS_NAME)) {
+              this.classList.remove(CLASS_NAME);
+              e.preventDefault();
+            }
+            e.stopPropagation(); // do not need pop in multi level mode
+          });
+        });
+  
+        // for hover
+        document
+          .querySelectorAll(".dropdown-hover, .dropdown-hover-all .dropdown")
+          .forEach(function (dd) {
+            dd.addEventListener("mouseenter", function (e) {
+              let toggle = e.target.querySelector(
+                ':scope>[data-bs-toggle="dropdown"]'
+              );
+              if (!toggle.classList.contains("show")) {
+                $bs.Dropdown.getOrCreateInstance(toggle).toggle();
+                dd.classList.add(CLASS_NAME);
+                $bs.Dropdown.clearMenus();
+              }
+            });
+            dd.addEventListener("mouseleave", function (e) {
+              let toggle = e.target.querySelector(
+                ':scope>[data-bs-toggle="dropdown"]'
+              );
+              if (toggle.classList.contains("show")) {
+                $bs.Dropdown.getOrCreateInstance(toggle).toggle();
+              }
+            });
+          });
+      })(bootstrap);
+    </script>
+</body>
+</html>

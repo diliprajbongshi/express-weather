@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{>headerlinks}}
+</head>
+<body>
+    
+<!-- Header part is start here  -->
+{{>navbar}}
+<!-- Header part is end here  -->
+<!-- Banner part is start here  -->
+<section class="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-12 banner_right m-auto">
+                <div class="weather_content">
+                   <form class="temp_form">
+                      <input type="text" placeholder="Enter your name" id="cityname" autocomplete="off">
+                      <input type="submit" value="search" id="submitBtn">
+                   </form>
+                </div>
+                <div class="tempInforMation">
+                     <div class="top_layer">
+                         <p id="day">SunDay</p>
+                         <p id="todayDate">23,DCM</p>
+                     </div>
+                     <div class="main_layer">
+                         <p id="city_name">Get output here</p>
+                         <div class="middle_layer data_hide">
+                             <p id="temp"><span class="me-3" id="temp_real_value">0</span><sup class="zero">o</sup>c</p>
+                             <p id="temp_status"><i class="fa fa-cloud clouds"></i></p>
+                         </div>
+                     </div>
+                </div>
+            </div>
+            <!-- Banner right side  -->
+            
+        </div>
+    </div>
+</section>
+<!-- Banner part is end here  -->
+
+
+<!-- Footer part is start here  -->
+{{>footer}}
+<!-- Footer part is end here  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+    <script src="js/all.min.js"></script>
+    <script src="js/counter.js"></script>
+    <script src="js/dropdown.js"></script>
+    <script src="js/script.js"></script>
+      <script>
+        const currentDate = document.getElementById('date')
+        let day = document.getElementById('day')
+        let todayDate = document.getElementById('todayDate')
+        const weathericon = document.getElementById('weathericon')
+        const tempStatus = 'Clouds'
+        const getCurrentDay = () => {
+            const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+            let currentTime = new Date();
+            let days = weekday[currentTime.getDay()];
+            return days;
+            // console.log(weekday[currentTime.getDay()]);
+        }
+        
+        const currentTime = () => {
+            let monthNames = ["Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            let now = new Date();
+            let month = monthNames[now.getMonth()];
+            let date = now.getDate()
+            let hours = now.getHours();
+            let mins = now.getMinutes()
+            let period = 'am';
+            if(hours > 11){
+                period = 'pm';
+                if(hours > 12) hours -= 12
+            }
+            if(mins < 10){
+                mins = "0" + mins
+            }
+
+
+          return `${month} ${date} | ${hours}:${mins}${period}`
+            // console.log(month  + "/" + date);
+            // console.log(monthNames[]);
+        }
+        day.innerHTML = getCurrentDay()
+        todayDate.innerHTML = currentTime()
+        {{!-- currentDate.innerHTML = getCurrentDay() + " | " + currentTime() --}}
+    </script>
+   
+</body>
+</html>
